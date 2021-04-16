@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Today</title>
+</head>
+
+<body>
+    <h1>Weather Condition</h1>
+
+        <input type="text" , name="city" , placeholder="Enter city name">
+        <!-- Append the weather data in required HTML format here using js or jQuery -->
+        <button onclick="handleClick()">GET</button>
+
+
+    </form>
+
+
+    <script>
+        function handleClick() {
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                console.log("Geolocation is not supported by this browser.");
+            }
+
+
+            function showPosition(position) {
+                const myLatitude = position.coords.latitude;
+                const myLongitude = position.coords.longitude;
+                const url = `https://api.openweathermap.org/data/2.5/weather?lat=${myLatitude}&lon=${myLongitude}&units=metric&appid=f1ebab0d740525d33b8bef7132298543`;
+
+                fetch(url).then(response => response.json()).then(data => console.log(data)).catch(err=>console.log(err));
+            }
+
+        }
+    </script>
+</body>
+
+</html>
