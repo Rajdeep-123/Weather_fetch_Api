@@ -31,7 +31,7 @@
             function showPosition(position) {
                 const myLatitude = position.coords.latitude;
                 const myLongitude = position.coords.longitude;
-                const url = `https://api.openweathermap.org/data/2.5/weather?lat=${myLatitude}&lon=${myLongitude}&units=metric&appid=f1ebab0d740525d33b8bef7132298543`;
+                const url = `https://api.openweathermap.org/data/2.5/weather?lat=${myLatitude}&lon=${myLongitude}&units=metric&appid={YOUR API KEY}`;
 
                 fetch(url).then(response => response.json()).then(data => console.log(data)).catch(err=>console.log(err));
             }
